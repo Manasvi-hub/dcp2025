@@ -1,0 +1,12 @@
+def reverseWords(s: str) -> str:
+    # Split string into words (ignores multiple spaces)
+    words = s.split()
+    # Reverse the list of words
+    words.reverse()
+    # Join with a single space
+    return " ".join(words)
+
+
+# Example usage
+s = "the sky is blue"
+print("Reversed:", '"' + reverseWords(s) + '"')
