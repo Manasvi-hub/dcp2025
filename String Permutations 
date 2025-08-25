@@ -1,0 +1,31 @@
+def permute_unique(s: str):
+    result = []
+    used = [False] * len(s)
+    s = sorted(s)  # Sort to handle duplicates
+
+    def backtrack(path):
+        if len(path) == len(s):
+            result.append("".join(path))
+            return
+        
+        for i in range(len(s)):
+            # Skip if already used
+            if used[i]:
+                continue
+            
+            # Skip duplicates
+            if i > 0 and s[i] == s[i-1] and not used[i-1]:
+                continue
+            
+            used[i] = True
+            path.append(s[i])
+            backtrack(path)
+            path.pop()
+            used[i] = False
+
+    backtrack([])
+    return result
+
+
+# Example usage
+print(permute_unique("abc"))
